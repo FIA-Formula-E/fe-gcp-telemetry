@@ -70,27 +70,20 @@ jobs:
           workload_identity_provider: 'projects/428722499499/locations/global/workloadIdentityPools/dev-stage-devops/providers/dev-stage-devops'
           service_account: 'datapipelinesa@fe-dev-datalake.iam.gserviceaccount.com'
           access_token_lifetime: 3600s
-
-      - id: 'deploy'
-        uses: 'google-github-actions/deploy-cloud-functions@v3'
-        timeout-minutes: 10
-        with:
-        name: 'my-function'
-        runtime: 'nodejs22'
       
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       - name: Terraform Init
         run: terraform init
-        working directory: ./Cloudfunction
+        working-directory: ./Cloudfunction
 
     # Generates an execution plan for Terraform
       - name: Terraform Plan
         run: terraform plan -input=false
-        working directory: ./Cloudfunction
+        working-directory: ./Cloudfunction
 
       # On push to "main",build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
-        working directory: ./Cloudfunction
+        working-directory: ./Cloudfunction
