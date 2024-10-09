@@ -75,17 +75,7 @@ variable "bucket_resource_to_track" {
   description = "location of bucket to track the status of the object"
   default = ""
 }
-variable "function_name" {
-    type = string
-    description = "Cloud function name" 
-    default = ""
-}
 
- variable "runtime" {
-    type = string
-    description = "source code runtime" 
-    default = ""
-}
 
 variable "available_memory_mb" {
     type = number
