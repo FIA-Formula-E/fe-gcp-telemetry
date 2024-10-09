@@ -69,15 +69,7 @@ jobs:
         with:
           workload_identity_provider: 'projects/428722499499/locations/global/workloadIdentityPools/dev-stage-devops/providers/dev-stage-devops'
           service_account: 'datapipelinesa@fe-dev-datalake.iam.gserviceaccount.com'
-          access_token_lifetime: 3600s
-
-      - id: 'deploy'
-        uses: 'google-github-actions/deploy-cloud-functions@v3'
-        timeout-minutes: 10
-        with:
-        name: 'my-function'
-        runtime: 'nodejs22'
-      
+          access_token_lifetime: 3600s      
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       - name: Terraform Init
